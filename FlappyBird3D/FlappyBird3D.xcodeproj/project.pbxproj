@@ -14,6 +14,7 @@
 		3182F83B1FB443240095947C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3182F83A1FB443240095947C /* Assets.xcassets */; };
 		3182F83E1FB443240095947C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3182F83C1FB443240095947C /* LaunchScreen.storyboard */; };
 		3182F8461FB445CE0095947C /* BirdScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3182F8451FB445CE0095947C /* BirdScene.swift */; };
+		6C0A10961FC4B90F00161AB8 /* ScreenFoto in Resources */ = {isa = PBXBuildFile; fileRef = 6C0A10951FC4B90F00161AB8 /* ScreenFoto */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3182F83D1FB443240095947C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3182F83F1FB443240095947C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3182F8451FB445CE0095947C /* BirdScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdScene.swift; sourceTree = "<group>"; };
+		6C0A10951FC4B90F00161AB8 /* ScreenFoto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScreenFoto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				3182F8351FB443240095947C /* GameViewController.swift */,
 				3182F8451FB445CE0095947C /* BirdScene.swift */,
 				3182F8371FB443240095947C /* Main.storyboard */,
+				6C0A10951FC4B90F00161AB8 /* ScreenFoto */,
 				3182F83A1FB443240095947C /* Assets.xcassets */,
 				3182F83C1FB443240095947C /* LaunchScreen.storyboard */,
 				3182F83F1FB443240095947C /* Info.plist */,
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C0A10961FC4B90F00161AB8 /* ScreenFoto in Resources */,
 				3182F8341FB443240095947C /* art.scnassets in Resources */,
 				3182F83E1FB443240095947C /* LaunchScreen.storyboard in Resources */,
 				3182F83B1FB443240095947C /* Assets.xcassets in Resources */,

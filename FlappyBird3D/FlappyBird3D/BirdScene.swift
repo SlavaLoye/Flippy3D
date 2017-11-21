@@ -11,7 +11,8 @@ import SceneKit
 
 class BirdScene: SCNScene {
 
-    let emptyGrass = SCNNode()
+    let emptyGrass1 = SCNNode()
+    let emptyGrass2 = SCNNode()
 
     convenience init(create: Bool) {
         self.init()
@@ -20,13 +21,24 @@ class BirdScene: SCNScene {
         setupScenery()
 
         let propsScene = SCNScene(named: "art.scnassets/Props.dae")!
-        emptyGrass.scale = SCNVector3(easyScale: 0.15)
-        emptyGrass.position = SCNVector3(0, -1.3, 0)
+        emptyGrass1.scale = SCNVector3(easyScale: 0.15)
+        emptyGrass1.position = SCNVector3(0, -1.3, 0)
 
-        let grass = propsScene.rootNode.childNode(withName: "Ground", recursively: true)!
-        grass.position = SCNVector3(-5.0, 0, 0)
-        emptyGrass.addChildNode(grass)
-        rootNode.addChildNode(emptyGrass)
+
+        emptyGrass2.scale = SCNVector3(easyScale: 0.15)
+        emptyGrass2.position = SCNVector3(4.45, -1.3, 0)
+
+        let grass1 = propsScene.rootNode.childNode(withName: "Ground", recursively: true)!
+        grass1.position = SCNVector3(-5.0, 0, 0)
+
+        let grass2 = grass1.clone()
+        grass1.position = SCNVector3(-5.0, 0, 0)
+
+        emptyGrass1.addChildNode(grass1)
+        emptyGrass2.addChildNode(grass2)
+
+        rootNode.addChildNode(emptyGrass1)
+        rootNode.addChildNode(emptyGrass2)
     }
 
     // устанавливаем положение камеры
