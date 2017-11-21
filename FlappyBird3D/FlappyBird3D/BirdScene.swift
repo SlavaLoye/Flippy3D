@@ -78,6 +78,10 @@ class BirdScene: SCNScene {
     func setupScenery() {
         // создали геометрию земли
         let groundGeo = SCNBox(width: 4, height: 0.5, length: 0.4, chamferRadius: 0)
+        groundGeo.firstMaterial!.diffuse.contents = #colorLiteral(red: 1, green: 0.768627451, blue: 0, alpha: 1)
+        //groundGeo.firstMaterial!.specular.contents = UIColor.black
+        groundGeo.firstMaterial!.specular.contents = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        groundGeo.firstMaterial?.emission.contents = #colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)
 	// привязали ее к Node земли
         let groundNode = SCNNode(geometry: groundGeo)
         
