@@ -25,11 +25,12 @@ class BirdScene: SCNScene {
         cameraNode.pivot = SCNMatrix4MakeTranslation(0, 0, -3)
         rootNode.addChildNode(cameraNode)
     }
-    
+
+    // создаем декорацию ( земли)
     func setupScenery() {
         
         let groundGeo = SCNBox(width: 4, height: 0.5, length: 0.4, chamferRadius: 0)
-        
+
         let groundNode = SCNNode(geometry: groundGeo)
         
         let emptySand = SCNNode()
