@@ -11,11 +11,22 @@ import SceneKit
 
 class BirdScene: SCNScene {
 
+    let emptyGrass = SCNNode()
+
     convenience init(create: Bool) {
         self.init()
         
         setupCameraAndLights()
         setupScenery()
+
+        let propsScene = SCNScene(named: "art.scnassets/Props.dae")!
+        emptyGrass.scale = SCNVector3(easyScale: 0.15)
+        emptyGrass.position = SCNVector3(0, -1.3, 0)
+
+        let grass = propsScene.rootNode.childNode(withName: "Ground", recursively: true)!
+        grass.position = SCNVector3(-5.0, 0, 0)
+        emptyGrass.addChildNode(grass)
+        rootNode.addChildNode(emptyGrass)
     }
 
     // устанавливаем положение камеры
@@ -93,4 +104,15 @@ class BirdScene: SCNScene {
         
     }
     
+}
+
+// расширяем SCNVector3 для переменной emptyGrass
+
+extension SCNVector3 {
+    init(easyScale: Float) {
+        self.x = easyScale
+        self.y = easyScale
+        self.z = easyScale
+
+    }
 }
