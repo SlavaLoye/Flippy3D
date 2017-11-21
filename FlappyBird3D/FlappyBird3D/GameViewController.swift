@@ -30,11 +30,15 @@ class GameViewController: UIViewController {
     func setupScene() {
         scnScene = BirdScene(create: true)
         scnView.scene = scnScene
+
         // управление камерой
 
         //scnView.showsStatistics = true
-        scnView.allowsCameraControl = true
+        //scnView.allowsCameraControl = true
         //scnView.autoenablesDefaultLighting = true // свет на сцене
+
+        scnView.delegate = (scnScene as! SCNSceneRendererDelegate)
+        scnView.isPlaying = true
         
         scnView.backgroundColor = #colorLiteral(red: 0, green: 0.8000000119, blue: 1, alpha: 1)
     }

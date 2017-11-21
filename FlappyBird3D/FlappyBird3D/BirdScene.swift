@@ -9,10 +9,17 @@
 
 import SceneKit
 
-class BirdScene: SCNScene {
+class BirdScene: SCNScene, SCNSceneRendererDelegate  {
 
     let emptyGrass1 = SCNNode()
     let emptyGrass2 = SCNNode()
+
+    var runningUpdate = true
+    var timeLast : Double?
+    let speedConsnant = -0.7
+
+
+
 
     convenience init(create: Bool) {
         self.init()
@@ -114,6 +121,36 @@ class BirdScene: SCNScene {
 
         rootNode.addChildNode(emptySand)
         
+    }
+
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        let dt: Double
+
+        if runningUpdate {
+            if let lt = timeLast {
+                dt = time - lt
+            } else {
+                dt = 0
+            }
+        } else {
+            dt = 0
+        }
+    	timeLast = time
+
+        moveGrass(node: emptyGrass1, dt: dt)
+        moveGrass(node: emptyGrass2, dt: dt)
+
+    }
+    // func - для движения травы
+
+    func moveGrass(node: SCNNode, dt: Double)  {
+        // время умножаем на скорость
+        node.position.x += Float(dt * speedConsnant)
+
+        if node.position.x <= -4.45 {
+            node.position.x = 4.45
+        }
+
     }
     
 }
