@@ -12,8 +12,8 @@ import SceneKit
 
 class GameViewController: UIViewController {
     
-    var scnView: SCNView!
-    var scnScene: SCNScene!
+    private var scnView: SCNView!
+    private var  scnScene: SCNScene!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class GameViewController: UIViewController {
         //scnView.autoenablesDefaultLighting = true // свет на сцене
 
         scnView.delegate = (scnScene as! SCNSceneRendererDelegate)
+        // запускаем движение травы
         scnView.isPlaying = true
         
         scnView.backgroundColor = #colorLiteral(red: 0, green: 0.8000000119, blue: 1, alpha: 1)

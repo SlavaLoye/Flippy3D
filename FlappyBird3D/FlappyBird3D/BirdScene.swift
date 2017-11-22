@@ -18,6 +18,17 @@ class BirdScene: SCNScene, SCNSceneRendererDelegate  {
     var timeLast : Double?
     let speedConsnant = -0.7
 
+    //MARK: - create (pipe multiplication)
+
+    // размножение труб
+
+    private var emptyPipe1 = SCNNode()
+    private var emptyPipe2 = SCNNode()
+    private var emptyPipe3 = SCNNode()
+    private var emptyPipe4 = SCNNode()
+
+    let emptyBird = SCNNode()
+    private var bird = SCNNode()
 
 
 
@@ -46,6 +57,51 @@ class BirdScene: SCNScene, SCNSceneRendererDelegate  {
 
         rootNode.addChildNode(emptyGrass1)
         rootNode.addChildNode(emptyGrass2)
+
+//MARK: - create (pipe)
+        // создаем нижние трубы
+        let bottomPipe = propsScene.rootNode.childNode(withName: "Pipe", recursively: true)
+
+        // создаем верхние  трубы
+
+        let topPipe = bottomPipe?.clone()
+        topPipe?.rotation = SCNVector4(0, 0, 1, Double.pi)
+        topPipe?.position = SCNVector3(0, 13, 0)
+
+        let emptyPipe = SCNNode()
+        emptyPipe.addChildNode(bottomPipe!)
+        emptyPipe.addChildNode(topPipe!)
+        emptyPipe.scale = SCNVector3(easyScale: 0.15)
+
+        // высота труб
+
+        emptyPipe1 = emptyPipe.clone()
+        emptyPipe1.position = SCNVector3(2, randomHeight(), 0)
+
+        emptyPipe2 = emptyPipe.clone()
+        emptyPipe2.position = SCNVector3(3, randomHeight(), 0)
+
+        emptyPipe3 = emptyPipe.clone()
+        emptyPipe3.position = SCNVector3(4, randomHeight(), 0)
+
+        emptyPipe4 = emptyPipe.clone()
+        emptyPipe4.position = SCNVector3(5, randomHeight(), 0)
+
+    // добавляем в корневой узел
+
+        rootNode.addChildNode(emptyPipe1)
+        rootNode.addChildNode(emptyPipe2)
+        rootNode.addChildNode(emptyPipe3)
+        rootNode.addChildNode(emptyPipe4)
+
+        let birdScene = SCNScene(named: "art.scnassets/FlappyBird.dae")!
+        bird = birdScene.rootNode.childNode(withName: "Bird", recursively: true)!
+        emptyBird.addChildNode(bird)
+        emptyBird.scale = SCNVector3(easyScale: 0.08)
+        emptyBird.rotation = SCNVector4(0, 1, 0, -1.57)
+        emptyBird.position = SCNVector3(-0.3, 0, 0)
+
+        rootNode.addChildNode(emptyBird)
     }
 
     // устанавливаем положение камеры
@@ -122,6 +178,7 @@ class BirdScene: SCNScene, SCNSceneRendererDelegate  {
         rootNode.addChildNode(emptySand)
         
     }
+    // логика движения нашей травы
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         let dt: Double
@@ -140,6 +197,12 @@ class BirdScene: SCNScene, SCNSceneRendererDelegate  {
         moveGrass(node: emptyGrass1, dt: dt)
         moveGrass(node: emptyGrass2, dt: dt)
 
+        movePipe(node: emptyPipe1, dt: dt)
+        movePipe(node: emptyPipe2, dt: dt)
+        movePipe(node: emptyPipe3, dt: dt)
+        movePipe(node: emptyPipe4, dt: dt)
+
+
     }
     // func - для движения травы
 
@@ -151,6 +214,24 @@ class BirdScene: SCNScene, SCNSceneRendererDelegate  {
             node.position.x = 4.45
         }
 
+    }
+
+    func movePipe(node: SCNNode, dt: Double)  {
+        // время умножаем на скорость
+        node.position.x += Float(dt * speedConsnant)
+
+        if node.position.x <= -2{
+            node.position.x = 2
+            node.position.y = randomHeight()
+        }
+
+    }
+
+
+    func randomHeight() -> Float {
+        var newHeight = Float(arc4random_uniform(13))
+        newHeight /= -10.0
+        return newHeight
     }
     
 }
